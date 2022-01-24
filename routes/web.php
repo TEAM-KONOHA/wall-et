@@ -19,11 +19,17 @@ use Illuminate\Support\Facades\Route;
 
 
 // Index page / Dashboard
-Route::get('/', 'App\Http\Controllers\WalletController@dashboard_1');
-Route::get('/index', 'App\Http\Controllers\WalletController@dashboard_1');
+// Route::get('/', 'App\Http\Controllers\WalletController@dashboard_1');
+// Route::get('/index', 'App\Http\Controllers\WalletController@dashboard_1');
+Route::redirect('/', '/home');
+Route::redirect('/index', '/home');
 
 // Dashboard coin-details tab
 Route::get('/coin-details', 'App\Http\Controllers\WalletController@coin_details');
 
 // Dashboard market-captial tab
 Route::get('/market-capital', 'App\Http\Controllers\WalletController@market_capital');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\WalletController::class,'dashboard_1'])->name('home');

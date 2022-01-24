@@ -10,6 +10,11 @@
 	<meta name="description" content="@yield('page_description', $page_description ?? '')"/>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
+    <!-- Manifest File -->
+    <link rel="manifest" href="/manifest.json">
+    <!-- Custom Meta -->
+    <meta name="theme-color" content="#dead26"/>
+    <link rel="apple-touch-icon" href="/images/icons/icon-192x192.png">
 	
 	
 	
@@ -30,6 +35,19 @@
 </head>
 
 <body>
+
+    <!-- Custome code -->
+    <script>
+        // console.log("Hello from script tag");
+
+        // Check that service workers are supported
+        if ("serviceWorker" in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/service-worker.js");
+            });
+        }
+    </script>
 
     <!--*******************
         Preloader start
